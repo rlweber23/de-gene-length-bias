@@ -37,4 +37,5 @@ annotation can be downloaded with:
 
 ```bash
 wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M22/gencode.vM22.annotation.gtf.gz
+gzip -d gencode.vM22.annotation.gtf.gz
 ```
