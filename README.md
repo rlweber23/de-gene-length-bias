@@ -11,7 +11,7 @@ Using a clean Conda environment is recommended:
 ```bash
 conda create -n genelength python=3.11
 conda activate genelength
-pip install git+https://github.com/YOUR_USERNAME/gene-length.git
+pip install git+https://github.com/rlweber23/de-gene-length-bias.git
 ```
 
 Install Jupyter only if you plan to use the notebook tutorial:
