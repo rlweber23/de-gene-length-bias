@@ -11,55 +11,30 @@ Using a clean Conda environment is recommended:
 ```bash
 conda create -n genelength python=3.11
 conda activate genelength
+```
+Install:
+```bash
 pip install git+https://github.com/rlweber23/de-gene-length-bias.git
 ```
 
-Install Jupyter only if you plan to use the notebook tutorial:
+Install Jupyter if you plan to use the notebook tutorials:
 
 ```bash
 pip install jupyter
 ```
 
-## Quick start
+## Tutorials
 
-In a notebook or Python script, import the package and prepare:
+The tutorials walk through the workflow in two steps:
 
-- a counts table with genes as rows and samples as columns;
-- a sample metadata table with one row per sample; and
-- a gene-length table with `geneID` and `gene_length` columns.
+1. [Generate a gene-length CSV from a GTF](tutorials/step1_get_gene_lengths_from_gtf.ipynb)
+2. [Run the gene-length analysis](tutorials/step2_gene_length_analysis_tutorial.ipynb)
 
-```python
-import pandas as pd
-import gene_length as glt
+Use the same GTF annotation that was used during RNA-seq read mapping. The
+annotation version should match as well, since gene IDs and gene coordinates
+need to be consistent with the mapped data. For example, a GENCODE mouse M22
+annotation can be downloaded with:
 
-gene_lengths = pd.read_csv("gene_lengths.csv")
-gene_length_map = glt.make_gene_length_map(
-    gene_lengths,
-    id_col="geneID",
-    length_col="gene_length",
-)
-
-meta = pd.read_csv("sample_table.csv", index_col="sampleName")
-counts = pd.read_csv("counts.tsv", sep="\t", index_col="feature")
-
-results = glt.run_gene_length_analysis(
-    counts,
-    meta,
-    gene_length_map,
-    group_col="Condition",
-    reference="Control",
-    tested="Treatment",
-)
+```bash
+wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M22/gencode.vM22.annotation.gtf.gz
 ```
-
-To create a gene-length table from a GTF file:
-
-```python
-gene_lengths = glt.generate_gene_length_table(
-    "genes.gtf",
-    output_file="gene_lengths.csv",
-)
-```
-
-For a complete example, see
-[`gene_length_analysis_tutorial.ipynb`](gene_length_analysis_tutorial.ipynb).
