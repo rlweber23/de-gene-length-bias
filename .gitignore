@@ -1,0 +1,5 @@
+__pycache__/
+.ipynb_checkpoints/
+raw/
+vm22_gene_lengths.csv
+ .DS_Store

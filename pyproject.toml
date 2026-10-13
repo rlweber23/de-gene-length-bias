@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gene-length"
+version = "0.2.0"          # keep in sync with __version__ in __init__.py
+description = "Gene-length bias analysis for differential expression (edgePython)"
+readme = "README.md"
+requires-python = ">=3.9"  # raise this if edgepython needs a newer Python
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "statsmodels",
+    "edgepython",
+]
+
+[tool.setuptools]
+packages = ["gene_length"]
